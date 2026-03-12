@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import '../styles/components/board-row.css';
 import Square from './Square';
+import calculateWinner from '../calculateWinner';
 
 // We pass an anonymous function because writing handleClick(i)
 // would execute the function immediately during render.
