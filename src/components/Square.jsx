@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import '../styles/components/square.css';
 
 const Square = ({ value, onSquareClick }) => {

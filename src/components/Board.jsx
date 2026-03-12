@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import '../styles/components/board-row.css';
 import Square from './Square';
 
@@ -11,12 +11,16 @@ import Square from './Square';
 
 const Board = () => {
   const [squares, setSquares] = useState(Array(9).fill(''));
+  const [isNext, setIsNext] = useState(false);
 
   const handleClick = (i) => {
+    if (squares[i]) return;
+
     // creating copy of array becouse react is re render only when is changed reference
     const nextSquare = squares.slice();
-    nextSquare[i] = 'X';
+    isNext ? (nextSquare[i] = 'O') : (nextSquare[i] = 'X');
     setSquares(nextSquare);
+    setIsNext((prev) => !prev);
   };
 
   return (
