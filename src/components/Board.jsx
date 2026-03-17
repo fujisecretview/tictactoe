@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../styles/components/board-row.css';
 import Square from './Square';
-import calculateWinner from '../calculateWinner';
+import calculateWinner from '../utils/calculateWinner';
 
 // We pass an anonymous function because writing handleClick(i)
 // would execute the function immediately during render.
@@ -14,8 +14,16 @@ const Board = () => {
   const [squares, setSquares] = useState(Array(9).fill(''));
   const [isNext, setIsNext] = useState(false);
 
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = 'Winner is ' + winner;
+  } else {
+    status = 'Next player is ' + (isNext ? 'O' : 'X');
+  }
+
   const handleClick = (i) => {
-    if (squares[i]) return;
+    if (squares[i] || winner) return;
 
     // creating copy of array becouse react is re render only when is changed reference
     const nextSquare = squares.slice();
@@ -26,6 +34,7 @@ const Board = () => {
 
   return (
     <>
+      <h1>{status}</h1>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />

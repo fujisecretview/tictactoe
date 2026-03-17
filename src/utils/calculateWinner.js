@@ -16,8 +16,8 @@ function calculateWinner(squares) {
     if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) {
       return squares[a];
     }
-    return null;
   }
+  return null;
 }
 
 export default calculateWinner;
