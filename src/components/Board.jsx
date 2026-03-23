@@ -9,28 +9,22 @@ import calculateWinner from '../utils/calculateWinner';
 // By wrapping it in () => handleClick(i), we pass a function reference
 // that will be executed later when the click event occurs.
 
-const Board = ({
-  squares,
-  setSquares,
-  initialSquares,
-  isNext,
-  setIsNext,
-  onPlay,
-}) => {
-  const winner = calculateWinner(squares);
+const Board = ({ currentSquares, isNext, onPlay, isBoardFull }) => {
+  const winner = calculateWinner(currentSquares);
   let status;
   if (winner) {
     status = 'Winner is ' + winner;
+  } else if (!winner && isBoardFull) {
+    status = 'Its Draw!';
   } else {
-    status = 'Next player is ' + (isNext ? 'O' : 'X');
+    status = 'Next player is ' + (isNext ? 'X' : 'O');
   }
 
   const handleClick = (i) => {
-    if (squares[i] || winner) return;
+    if (currentSquares[i] || winner) return; // if square is occupated or winner returned truthy value, do nothing
     // creating copy of array becouse react is re render only when is changed reference
-    const nextSquare = [...squares];
-    isNext ? (nextSquare[i] = 'O') : (nextSquare[i] = 'X');
-    setSquares(nextSquare);
+    const nextSquare = [...currentSquares]; // copied and modified value which we clicked
+    isNext ? (nextSquare[i] = 'X') : (nextSquare[i] = 'O');
     onPlay(nextSquare);
   };
 
@@ -38,20 +32,14 @@ const Board = ({
     <>
       <h1>{status}</h1>
 
-      <div className="board-row">
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-        <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-        <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
-      </div>
-      <div className="board-row">
-        <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-        <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-        <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-      </div>
-      <div className="board-row">
-        <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-        <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-        <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+      <div className="board">
+        {currentSquares.map((square, i) => (
+          <Square
+            key={i}
+            onSquareClick={() => handleClick(i)}
+            value={currentSquares[i]}
+          />
+        ))}
       </div>
     </>
   );
