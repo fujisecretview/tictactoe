@@ -35,12 +35,13 @@ const Game = () => {
 
   const moves = history.map((square, index) => {
     let description;
-
     description = 'Go to move ' + index;
-
+    if (index === 0) return;
     return (
       <li key={index}>
-        <button onClick={() => jumpTo(index)}>{description}</button>
+        <button onClick={() => jumpTo(index)} className="history-button">
+          {description}
+        </button>
       </li>
     );
   });
@@ -57,13 +58,13 @@ const Game = () => {
             currentSquares={currentSquares}
             isBoardFull={isBoardFull}
           />
-          <div className="game-controls">
-            <div className="reset-button-wrapper">
-              <button onClick={resetGame} className="reset-button">
-                Reset button
-              </button>
-            </div>
+
+          <div className="reset-button-wrapper">
+            <button onClick={resetGame} className="reset-button">
+              Reset button
+            </button>
           </div>
+          <div className="game-history-container">{moves}</div>
         </div>
       </div>
     </>

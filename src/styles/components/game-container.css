@@ -9,14 +9,34 @@
   text-align: center;
   }
 
-.game-controls {
+.game-history-container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  max-width: 260px;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-left: 6px;
+  align-items: center;
+  list-style: none;
 }
 
 .game-info {
   display: flex;
   align-items: center;
+}
+
+.history-button {
+  background-color: #2196F3;
+  color: white;
+  border: none 1px #2196F3;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 12px 20px;
+}
+
+.history-button:hover {
+  background: #0690fa;
+  transform: scale(1.02);
 }
 
