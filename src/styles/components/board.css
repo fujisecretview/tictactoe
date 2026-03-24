@@ -1,11 +1,19 @@
 .board {
   display: grid;
+  width: 260px;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   background: white;
-  padding: 15px;
+  padding: 5px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.status {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #2196F3;
+  min-height: 36px;
+}

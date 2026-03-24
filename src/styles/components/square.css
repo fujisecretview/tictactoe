@@ -1,9 +1,23 @@
 .square {
-  width: 60px;
-  height: 60px;
-  border: 1px solid #999;
-  font-size: 24px;
+  aspect-ratio: 1;
+  width: 80px;
+  font-size: 48px;
   font-weight: bold;
-  cursor: pointer;
   background: white;
+  border: 3px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square:hover:not(.filled) {
+  background: #f0f0f0;
+  border-color: #2196F3;
+}
+
+.square.filled {
+
 }

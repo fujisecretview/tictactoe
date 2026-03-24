@@ -1,4 +1,4 @@
-import '../styles/components/board-row.css';
+import '../styles/components/board.css';
 import Square from './Square';
 import calculateWinner from '../utils/calculateWinner';
 
@@ -13,11 +13,11 @@ const Board = ({ currentSquares, isNext, onPlay, isBoardFull }) => {
   const winner = calculateWinner(currentSquares);
   let status;
   if (winner) {
-    status = 'Winner is ' + winner;
+    status = 'Winner is: ' + winner;
   } else if (!winner && isBoardFull) {
     status = 'Its Draw!';
   } else {
-    status = 'Next player is ' + (isNext ? 'X' : 'O');
+    status = 'Next player is: ' + (isNext ? 'X' : 'O');
   }
 
   const handleClick = (i) => {
@@ -30,8 +30,7 @@ const Board = ({ currentSquares, isNext, onPlay, isBoardFull }) => {
 
   return (
     <>
-      <h1>{status}</h1>
-
+      <h1 className="status">{status}</h1>
       <div className="board">
         {currentSquares.map((square, i) => (
           <Square

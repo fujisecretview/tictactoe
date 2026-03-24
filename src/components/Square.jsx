@@ -2,7 +2,7 @@ import '../styles/components/square.css';
 
 const Square = ({ value, onSquareClick }) => {
   return (
-    <button onClick={onSquareClick} className="square">
+    <button onClick={onSquareClick} className={`square ${value && 'filled'}`}>
       {value}
     </button>
   );
