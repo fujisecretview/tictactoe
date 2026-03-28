@@ -1,9 +1,9 @@
-import Game from './components/Game';
+import TicTacToePage from './pages/TicTacToePage';
 
 export const App = () => {
   return (
     <>
-      <Game />
+      <TicTacToePage />
     </>
   );
 };

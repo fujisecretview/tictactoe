@@ -1,4 +1,4 @@
-import '../styles/components/square.css';
+import './square.css';
 
 const Square = ({ value, onSquareClick }) => {
   return (

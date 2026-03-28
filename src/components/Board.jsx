@@ -1,5 +1,5 @@
 import '../styles/components/board.css';
-import Square from './Square';
+import Square from '../shared/ui/Square/';
 import calculateWinner from '../utils/calculateWinner';
 
 // We pass an anonymous function because writing handleClick(i)

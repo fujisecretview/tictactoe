@@ -1,8 +1,8 @@
-import Board from './Board';
+import Board from '../../components/Board';
 import { useState } from 'react';
-import '../styles/components/reset-button.css';
-import '../styles/components/game-container.css';
-import '../styles/components/wrapper.css';
+import '../../styles/components/reset-button.css';
+import '../../styles/components/game-container.css';
+import '../../styles/components/wrapper.css';
 
 const Game = () => {
   const initialSquares = Array(9).fill(null);
